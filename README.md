@@ -1,7 +1,5 @@
 # esm2-idp-interpretability
 
-# esm2-idp-interpretability
-
 Analyzing ESM2 attention layers for intrinsically disordered protein (IDP) binding sites.
 
 ## Phase 0 — Inference pipeline
