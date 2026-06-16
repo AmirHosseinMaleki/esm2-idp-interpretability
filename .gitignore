@@ -1,0 +1,26 @@
+# Data files
+data/csv_prepared_data/
+
+# Model outputs
+outputs/
+
+# ESM2 model weights (downloaded automatically)
+~/.cache/torch/hub/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Conda
+*.egg-info/
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.txt
+*.log
+!README.md
