@@ -1,8 +1,12 @@
 # Data files
-data/csv_prepared_data/
+data/
 
 # Model outputs
 outputs/
+
+software/
+
+mmseqs_ahoj/
 
 # ESM2 model weights (downloaded automatically)
 ~/.cache/torch/hub/
@@ -24,3 +28,4 @@ __pycache__/
 *.txt
 *.log
 !README.md
+torch_cache/

@@ -1,4 +1,4 @@
-# esm2-idp-interpretability
+# ESM2-IDP-Interpretability
 
 Analyzing ESM2 attention layers for intrinsically disordered protein (IDP) binding sites.
 
