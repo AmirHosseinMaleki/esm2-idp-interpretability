@@ -12,8 +12,6 @@ I ran ESM2 (650M, 33 layers) once per protein and saved, per protein, the attent
 - **Disordered (DisProt):** 991/992 proteins processed (one, L = 34,350, is too long for a single GPU) - ion, protein, DNA, RNA binding.
 - **Structured:** 12,428 proteins - ion (AHoJ-DB), protein (ScanNet), DNA and RNA (BioLiP).
 
-Two data issues were found and fixed for the structured set. The AHoJ ion data stored one row per ligand-binding event rather than per protein chain, so I merged annotations per chain (using OR across events) before clustering. ScanNet protein was sampled to 2,000 proteins to keep the analysis tractable. All structured sets were clustered at 10% identity to prevent train/test leakage.
-
 For Q2 I fetched per-residue **disorder annotations** directly from DisProt (1 = disordered, 0 = structured) for the IDP proteins, stored separately from the binding data. Of ~970 proteins, **720 are "mosaic"** - they contain both disordered and structured regions, which is what the boundary analysis needs.
 
 ---
@@ -49,6 +47,8 @@ Structured binding sites generally show a stronger and later attention signal th
 ![Q1 enrichment by layer: disordered vs structured](outputs/combined_figures/q1_disordered_vs_structured.png)
 
 **Caveat:** the within-site metric is partly inflated by binding sites being contiguous stretches combined with attention's local bias. The "×over random" baseline controls for the number of binding sites but not for contiguity - a follow-up control is planned.
+
+The within-site metric may be partly inflated. Binding sites usually sit in continuous stretches along the sequence, and ESM2's attention naturally favors nearby residues. So a binding residue attends to its neighbors - which happen to also be binding residues just because they're next to each other, not because the model specially links binding sites. To check how much of the signal is real, a proper next step is to compare against a random continuous stretch of the same size: if a random stretch shows the same effect, it's mostly geometry; if the binding stretch shows more, that extra is genuine.
 
 ---
 
